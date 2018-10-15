@@ -22,7 +22,7 @@ debug = true
 # Optional
 # Default: ["http"]
 #
-# defaultEntryPoints = ["http", "https"]
+defaultEntryPoints = ["http", "https"]
 
 ################################################################
 # Entrypoints configuration
@@ -35,6 +35,14 @@ debug = true
 [entryPoints]
     [entryPoints.http]
     address = ":80"
+        [entryPoints.http.redirect]
+        entryPoint = "https"
+    [entryPoints.https]
+    address = ":443"
+
+        [[entryPoints.https.tls.certificates]]
+            certFile = "/etc/letsencrypt/archive/xiange.tech/cert1.pem"
+            keyFile = "/etc/letsencrypt/archive/xiange.tech/privkey1.pem"
 
 ################################################################
 # Traefik logs configuration

@@ -1,0 +1,10 @@
+version: '3'
+
+services:
+  sentry:
+    image: sentry
+    env_file:
+      - .env
+    container_name: sentry
+    labels:
+      - "traefik.frontend.rule=Host:sentry.xiange.tech"

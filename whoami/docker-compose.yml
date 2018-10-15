@@ -3,4 +3,6 @@ services:
   whoami:
     image: emilevauge/whoami # A container that exposes an API to show its IP address
     labels:
-      - "traefik.frontend.rule=Host:whoami.xiange.tech"
+      - "traefik.prod.frontend.rule=Host:whoami.xiange.tech"
+      - "traefik.dev.frontend.rule=Host:whoami.xiange.me"
+      - "traefik.backend=whoami"
