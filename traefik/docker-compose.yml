@@ -1,0 +1,12 @@
+version: '3'
+
+services:
+  reverse-proxy:
+    image: traefik # The official Traefik docker image
+    ports:
+      - "80:80"     # The HTTP port
+      - "0.0.0.0:8000:8080" # The Web UI (enabled by --api)
+    volumes:
+      - ./config.toml:/etc/traefik/traefik.toml
+      - /var/run/docker.sock:/var/run/docker.sock
+    container_name: traefik
